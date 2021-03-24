@@ -52,6 +52,10 @@
                             </x-slot>
                         </x-dropdown>
                     </div>
+
+                    <x-nav-link :href="route('payroll.create')"
+                        :active="request()->routeIs('payroll.create')">
+                        Create Payroll</x-nav-link>
                 </div>
             </div>
 
@@ -130,6 +134,10 @@
                     Add Sales Rep Profile
                 </x-responsive-nav-link>
             </x-responsive-nav-group>
+
+            <x-responsive-nav-link :href="route('payroll.create')"
+                :active="request()->routeIs('payroll.create')">Create Payroll
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

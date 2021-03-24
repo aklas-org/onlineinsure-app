@@ -23,9 +23,18 @@ Route::get('/home', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+require __DIR__ . '/auth.php';
+
 Route::middleware(['auth'])->group(function () {
     Route::resource('sales-reps', \App\Http\Controllers\SalesRepController::class)
-        ->only(['index', 'create', 'store', 'show']);
-});
+        ->only(['index', 'create', 'store']);
 
-require __DIR__ . '/auth.php';
+    Route::resource('payroll', \App\Http\Controllers\PayrollController::class)
+        ->only(['create', 'store']);
+
+    Route::resource('pdfs', \App\Http\Controllers\PdfController::class)
+        ->only(['show'])
+        ->parameters([
+            'pdfs' => 'payroll'
+        ]);
+});

@@ -38,11 +38,15 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('sales-reps.index')">
+                                <x-dropdown-link
+                                    :href="route('sales-reps.index')"
+                                    :active="request()->routeIs('sales-reps.index')">
                                     {{ __('Sales Rep Profile') }}
                                 </x-dropdown-link>
 
-                                <x-dropdown-link :href="route('sales-reps.create')">
+                                <x-dropdown-link
+                                    :href="route('sales-reps.create')"
+                                    :active="request()->routeIs('sales-reps.create')">
                                     {{ __('Add Sales Rep Profile') }}
                                 </x-dropdown-link>
                             </x-slot>
@@ -114,10 +118,18 @@
                 {{ __('Home') }}
             </x-responsive-nav-link>
 
-            <div class="ml-3">
-                <div class="font-medium text-base text-gray-800">Sales Reps</div>
+            <x-responsive-nav-group>
+                <x-slot name="label">Sales Reps</x-slot>
 
-            </div>
+                <x-responsive-nav-link :href="route('sales-reps.index')"
+                    :active="request()->routeIs('sales-reps.index')">
+                    Sales Rep Profile
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('sales-reps.create')"
+                    :active="request()->routeIs('sales-reps.create')">
+                    Add Sales Rep Profile
+                </x-responsive-nav-link>
+            </x-responsive-nav-group>
         </div>
 
         <!-- Responsive Settings Options -->

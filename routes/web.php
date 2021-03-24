@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 }); */
 
-Route::redirect('/', '/dashboard');
+Route::redirect('/', '/home');
 
-Route::get('/dashboard', function () {
+Route::get('/home', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 

@@ -31,9 +31,9 @@ class Payroll extends Model
         return number_format($this->commission / 100, 2);
     }
 
-    public function salesReps()
+    public function salesRep()
     {
-        return $this->hasMany(SalesRep::class);
+        return $this->belongsTo(SalesRep::class);
     }
 
     public function clients()

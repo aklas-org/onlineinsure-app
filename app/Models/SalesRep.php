@@ -12,8 +12,8 @@ class SalesRep extends Model
 
     protected $guarded = [];
 
-    public function payroll()
+    public function payrolls()
     {
-        return $this->belongsTo(Payroll::class);
+        return $this->hasMany(Payroll::class);
     }
 }

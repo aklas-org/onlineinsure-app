@@ -11,15 +11,29 @@ class CreatePayroll
     {
         $data = Validator::make($input, [
             'sales_rep_id' => ['required', 'exists:sales_reps,id'],
-            'period' => ['required', 'date_format:Y-m-d'],
+            'period' => ['required', function ($attribute, $value, $fail) {
+                $dates = explode(' - ', $value);
+
+                if (2 != count($dates)) {
+                    $fail('The ' . $attribute . ' is invalid.');
+                }
+
+                if (! (strtotime($dates[0]) && strtotime($dates[1]))) {
+                    $fail('The ' . $attribute . ' is invalid.');
+                }
+            }],
             'bonus' => ['required', 'numeric'],
             'commission' => ['required', 'numeric'],
+            'client_id' => ['required', 'array'],
             'client_id.*' => ['required', 'exists:clients,id'],
-        ], [], [
+        ], [
+            'client_id.array' => 'The Number of Clients field is required.',
+        ], [
             'sales_rep_id' => 'Sales Rep',
             'period' => 'Period',
             'bonus' => 'Bonus',
             'commission' => 'Commission',
+            'client_id' => 'Number of Clients',
             'client_id.*' => 'Client',
         ])->validate();
 

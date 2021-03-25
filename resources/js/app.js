@@ -2,5 +2,7 @@ require('./bootstrap');
 
 require('alpinejs');
 
-window.Choices = require('choices.js');
-require('choices.js/public/assets/styles/choices.css');
+window.moment = require('moment');
+
+window.Pikaday = require('pikaday');
+require('pikaday/css/pikaday.css');

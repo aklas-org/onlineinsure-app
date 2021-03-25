@@ -21,6 +21,7 @@
         "tailwindcss": "^2.0.2"
     },
     "dependencies": {
-        "choices.js": "^9.0.1"
+        "moment": "^2.29.1",
+        "pikaday": "^1.8.2"
     }
 }

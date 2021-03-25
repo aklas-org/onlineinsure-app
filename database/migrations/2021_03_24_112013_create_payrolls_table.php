@@ -17,7 +17,7 @@ class CreatePayrollsTable extends Migration
             $table->id();
             $table->foreignId('sales_rep_id');
 
-            $table->date('period');
+            $table->string('period');
             $table->unsignedBigInteger('bonus');
             $table->unsignedBigInteger('commission');
 

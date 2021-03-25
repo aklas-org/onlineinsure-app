@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Payroll;
 use App\Models\SalesRep;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
 
 class PayrollFactory extends Factory
 {
@@ -22,9 +23,16 @@ class PayrollFactory extends Factory
      */
     public function definition()
     {
+        $date = $this->faker->dateTime;
+
+        $date = Carbon::parse($date);
+
+        $dateStart = $date->startOfWeek()->format('Y-m-d');
+        $dateEnd = $date->endOfWeek()->format('Y-m-d');
+
         return [
             'sales_rep_id' => SalesRep::factory(),
-            'period' => $this->faker->date,
+            'period' => $dateStart . ' - ' . $dateEnd,
             'bonus' => $this->faker->numberBetween(100, 1000),
             'commission' => $this->faker->numberBetween(1000, 10000),
         ];

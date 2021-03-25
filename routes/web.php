@@ -11,8 +11,30 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
+}); */
+
+Route::redirect('/', '/home');
+
+Route::get('/home', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('sales-reps', \App\Http\Controllers\SalesRepController::class)
+        ->only(['index', 'create']);
+
+    Route::resource('payroll', \App\Http\Controllers\PayrollController::class)
+        ->only(['create']);
+
+    Route::resource('pdfs', \App\Http\Controllers\PdfController::class)
+        ->only(['show'])
+        ->parameters([
+            'pdfs' => 'payroll',
+        ]);
 });

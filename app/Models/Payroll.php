@@ -11,6 +11,8 @@ class Payroll extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function setBonusAttribute($value)
     {
         $this->attributes['bonus'] = $value * 100;

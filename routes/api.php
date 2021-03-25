@@ -17,7 +17,3 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::middleware(['auth:sanctum'])->name('api.')->group(function () {
-    Route::get('sales-reps', [\App\Http\Controllers\Api\SalesRepController::class, 'index'])->name('sales-rep.index');
-});

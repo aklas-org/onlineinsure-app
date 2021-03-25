@@ -11,11 +11,4 @@ class PayrollController extends Controller
     {
         return view('payroll.create');
     }
-
-    public function store(CreatePayroll $action)
-    {
-        $payroll = $action->create(request()->input());
-
-        return redirect(route('pdfs.show', ['payroll' => $payroll->id]));
-    }
 }

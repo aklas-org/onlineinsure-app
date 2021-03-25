@@ -27,14 +27,14 @@ require __DIR__ . '/auth.php';
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('sales-reps', \App\Http\Controllers\SalesRepController::class)
-        ->only(['index', 'create', 'store']);
+        ->only(['index', 'create']);
 
     Route::resource('payroll', \App\Http\Controllers\PayrollController::class)
-        ->only(['create', 'store']);
+        ->only(['create']);
 
     Route::resource('pdfs', \App\Http\Controllers\PdfController::class)
         ->only(['show'])
         ->parameters([
-            'pdfs' => 'payroll'
+            'pdfs' => 'payroll',
         ]);
 });

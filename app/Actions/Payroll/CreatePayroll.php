@@ -2,6 +2,7 @@
 
 namespace App\Actions\Payroll;
 
+use App\Jobs\SendPayrollEmailToClients;
 use App\Models\Payroll;
 use Illuminate\Support\Facades\Validator;
 
@@ -42,6 +43,8 @@ class CreatePayroll
         $payroll->clients()->sync($data['client_id']);
 
         $payroll->load(['clients']);
+
+        SendPayrollEmailToClients::dispatch($payroll);
 
         return $payroll;
     }

@@ -12,7 +12,7 @@ return [
     | location for this type of information, allowing packages to have
     | a conventional file to locate the various service credentials.
     |
-    */
+     */
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'company' => [
+        'name' => 'Onlineinsure Limited',
+        'address' => '1C/39 Mackelvie Street Grey Lynn 1021 Auckland New Zealand',
+        'contact_number' => '+6493789676',
+        'website' => 'www.onlineinsure.co.nz',
+    ],
 ];

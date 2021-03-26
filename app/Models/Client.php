@@ -17,11 +17,6 @@ class Client extends Model
         $this->attributes['annual_premium'] = $value * 100;
     }
 
-    public function getAnnualPremiumCurrencyAttribute()
-    {
-        return number_format($this->annual_premium / 100, 2);
-    }
-
     public function payrolls()
     {
         return $this->belongsToMany(Payroll::class, 'payroll_clients');

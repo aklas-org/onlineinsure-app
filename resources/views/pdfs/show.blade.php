@@ -5,8 +5,12 @@
 
     <x-page-content>
         <div class="text-sm">
-            <h3 class="text-xl font-bold text-center text-blue-800">Buyer
-                Created Tax Invoice</h3>
+            <div class="relative">
+                <x-application-logo
+                    class="block h-10 w-auto fill-current text-gray-600" />
+                <h3 class="text-xl font-bold text-center text-blue-800 absolute inset-x-0 bottom-0">Buyer
+                    Created Tax Invoice</h3>
+            </div>
             <div
                 class="flex items-center justify-between bg-gray-300 font-bold text-base uppercase p-4 mt-8">
                 <div>Adviser No: {{ $payroll->salesRep->id }}<span
@@ -125,9 +129,13 @@
                 </table>
             </div>
 
-            <h3 class="text-xl font-bold text-center text-blue-800 mt-8"
-                style="page-break-before:always !important">Detail
-                Commission Statement</h3>
+            <div style="page-break-before:always !important"></div>
+            <div class="relative">
+                <x-application-logo
+                    class="block h-10 w-auto fill-current text-gray-600" />
+                <h3 class=" text-xl font-bold text-center text-blue-800 absolute inset-x-0 bottom-0">Detail
+                    Commission Statement</h3>
+            </div>
             <div
                 class="flex items-center justify-between bg-gray-300 font-bold text-base uppercase p-4 mt-8">
                 <div>Adviser No: {{ $payroll->salesRep->id }}<span
@@ -142,17 +150,20 @@
                 <thead>
                     <tr>
                         <th class="font-bold underline p-2">Client Name</th>
-                        <th class="font-bold underline p-2">Annual Premium</th>
+                        <th class="font-bold underline p-2">Annual Premium
+                        </th>
                         <th class="font-bold underline p-2">Balance</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($payroll->clients as $client)
                         <tr>
-                            <td class="text-center p-2">{{ $client->name }}
+                            <td class="text-center p-2">
+                                {{ $client->name }}
                             </td>
                             <td class="text-center p-2">
-                                ${{ currency($client->annual_premium) }}</td>
+                                ${{ currency($client->annual_premium) }}
+                            </td>
                             <td class="text-center p-2">
                                 ${{ currency($client->annual_premium - $payroll->commission) }}
                             </td>
@@ -173,4 +184,13 @@
             </table>
         </div>
     </x-page-content>
+
+    @push('scripts')
+        <script type="text/javascript">
+            window.onload = () => {
+                window.print();
+            }
+
+        </script>
+    @endpush
 </x-app-layout>

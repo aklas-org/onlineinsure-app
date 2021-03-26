@@ -125,7 +125,8 @@
                 </table>
             </div>
 
-            <h3 class="text-xl font-bold text-center text-blue-800 mt-8">Detail
+            <h3 class="text-xl font-bold text-center text-blue-800 mt-8"
+                style="page-break-before:always !important">Detail
                 Commission Statement</h3>
             <div
                 class="flex items-center justify-between bg-gray-300 font-bold text-base uppercase p-4 mt-8">
@@ -134,7 +135,7 @@
                 </div>
                 <div>{{ $payroll->period }}</div>
             </div>
-            <div class="bg-gray-300 font-bold text-base p-4">
+            <div class="bg-gray-300 font-bold text-base p-4 mt-4">
                 Production
             </div>
             <table class="table-auto w-full">
